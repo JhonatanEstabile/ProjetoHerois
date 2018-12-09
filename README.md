@@ -2,12 +2,12 @@
 
 Baixe os arquivos desse projeto e instale em seu servidor apache, para o pleno funcionamento do projeto crie um banco de dados de preferencia no mySql ou mariaDB com o nome : crud_herois usuario:root e sem senha, caso queira criar um banco com um nome usuario e senha diferente do sugerido essas informações precisarão ser mudadas no arquivo .env que esta localizado na raiz do projeto, os campos que precisara mudar são:
 
--DB_CONNECTION=mysql
--DB_HOST=127.0.0.1
--DB_PORT=3306
--DB_DATABASE=crud_herois
--DB_USERNAME=root
--DB_PASSWORD=
+- [DB_CONNECTION=mysql]
+- [DB_HOST=127.0.0.1]
+- [DB_PORT=3306]
+- [DB_DATABASE=crud_herois]
+- [DB_USERNAME=root]
+- [DB_PASSWORD=]
 
 ## Passo inicial
 
@@ -16,9 +16,9 @@ O primeiro passo é a criação das tabelas do projeto no banco de dados, para f
 ## Rotas para acesso da API
 
 para pegar todos os dados das tabelas pela api basta usar o metodo get nas rotas:
-/api/classes
-/api/especialidades
-/api/herois
+-** [/api/classes]
+-** [/api/especialidades]
+-** [/api/herois]
 
 para pegar os dados de um registro especifico das tabelas usando a api 
 basta usar o método get nas rotas "/" o número do id do registro que quer pegar :
