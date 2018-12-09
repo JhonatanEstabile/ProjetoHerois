@@ -1,69 +1,80 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Sistema de heróis 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Baixe os arquivos desse projeto e instale em seu servidor apache, para o pleno funcionamento do projeto crie um banco de dados de preferencia no mySql ou mariaDB com o nome : crud_herois usuario:root e sem senha, caso queira criar um banco com um nome usuario e senha diferente do sugerido essas informações precisarão ser mudadas no arquivo .env que esta localizado na raiz do projeto, os campos que precisara mudar são:
 
-## About Laravel
+-DB_CONNECTION=mysql
+-DB_HOST=127.0.0.1
+-DB_PORT=3306
+-DB_DATABASE=crud_herois
+-DB_USERNAME=root
+-DB_PASSWORD=
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Passo inicial
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+O primeiro passo é a criação das tabelas do projeto no banco de dados, para fazer isso abra o prompt de comando e vá até a pasta do projeto, dentro da mesma execute o comando: "php artisan migrate" Após executar esse comando as tabelas necessarias para o funcionamento do projeto serão criadas. No projeto existem dois arquivos seeders para registrar alguns dados nas tabelas classes e especialidades, caso queira que seja feito esse preenchimento inicial ainda na pasta do projeto no prompt de comando execute o seginte comando: " php artisan db:seed ".
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Rotas para acesso da API
 
-## Learning Laravel
+para pegar todos os dados das tabelas pela api basta usar o metodo get nas rotas:
+/api/classes
+/api/especialidades
+/api/herois
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+para pegar os dados de um registro especifico das tabelas usando a api 
+basta usar o método get nas rotas "/" o número do id do registro que quer pegar :
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+/api/classes/{{id}}
+/api/especialidades/{{id}}
+/api/herois/{{id}}
 
-## Laravel Sponsors
+para inserir um novo registro nas tabelas usando a api 
+basta enviar um post nas seguintes rotas com os seguntes campos:
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+Rota: /api/classes
+campos: nome (tipo string)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
+Exemplo:
+post para localhost:8000/api/classes campos do formulario Name="nome" value="Mago"
 
-## Contributing
+Rota: /api/especialidades
+campos:nome (tipo string)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+exemplo:
+post para localhost:8000/api/especialidades campos do formulario Name="nome" value="Ataque a distância"
 
-## Security Vulnerabilities
+Rota: /api/herois
+campos:
+nome (tipo string);
+vida (tipo integer);
+dano (tipo integer);
+defesa (tipo integer);
+vel_atq (tipo double);
+vel_mov (tipo integer);
+classe (tipo integer);
+especialidade[] (tipo integer) pode colocar quantos campos desse quiser
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+para atualizar os dados de um registro especifico das tabelas pela api 
+basta usar o método put para enviar os dados nas seguintes rotas passando "/" o numero do id do registro que quer atualizar :
 
-## License
+/api/classes/{{id}}
+campos:nome (tipo string)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+/api/especialidades/{{id}}
+campos:nome (tipo string)
+
+/api/herois/{{id}}
+campos:
+nome (tipo string);
+vida (tipo integer);
+dano (tipo integer);
+defesa (tipo integer);
+vel_atq (tipo double);
+vel_mov (tipo integer);
+classe (tipo integer);
+especialidade[] (tipo integer) pode colocar quantos campos desse quiser
+
+A exclusão é feita por meio do metodo http delete passando pela url o id do registro que quer apagar:
+
+/api/classes/{{id}}
+/api/especialidades/{{id}}
+/api/herois/{{id}}
