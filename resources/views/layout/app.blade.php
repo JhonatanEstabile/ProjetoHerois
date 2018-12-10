@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
-
+  
     <title>Sistema de Heróis - {{$current}}</title>
+
+    <style type="text/css">
+      body {
+        background: linear-gradient(50deg,#8ffcfc,#3a40fd);
+        font-family: Helvetica,Arial,sans-serif;
+      }
+    </style>
   </head>
   <body>
 

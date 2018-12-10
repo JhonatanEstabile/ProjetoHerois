@@ -55,7 +55,7 @@
                 <p>
                     Após cadastrar as especialidades e classes você finalmente conseguirá registrar os heróis, esse item funciona da mesma maneira 
                     que os outros dois, a grande diferença será a presença dos cards com os dados e imagem que você enviou, esses cards aparecerão tanto na tela de heróis 
-                    quanto na tela inicial do sistema, na tela de heróis estes ficarão logo abaixo da tabela de registros.
+                    quanto na tela inicial do sistema, na tela de heróis estes ficarão logo abaixo da tabela de registros e os registros dos heróis poderão ser filtrados por uma classe ou por uma especialidade.
                 </p>
             </div>
         </div>

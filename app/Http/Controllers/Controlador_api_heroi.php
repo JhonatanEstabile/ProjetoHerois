@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Heroi;
 use App\HeroiEspecialidade;
+use App\Especialidade;
 
 class Controlador_api_heroi extends Controller
 {
@@ -21,6 +22,39 @@ class Controlador_api_heroi extends Controller
     }
 
     /**
+     * Retorna os dados dos heróis que possuem o id da classe passada como paramentro.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function heroi_filtro_classe($id){
+
+        $cats = Heroi::with(['classe', 'especialidade'])->where('classe_id', $id)->get();
+        if(isset($cats)){
+            return json_encode($cats);
+        }else{
+            return response('Classe não encontrada', 404);
+        }
+
+    }
+
+    /**
+     * Retorna os dados dos heróis que possuem o id da especialidade passada como paramentro.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function heroi_filtro_especialidade ($id){
+
+        $cats = Especialidade::with(['heroi'])->find($id);
+        if(isset($cats)){
+            return json_encode($cats);
+        }else{
+            return response('Especialidade não encontrada', 404);
+        }
+
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -31,7 +65,7 @@ class Controlador_api_heroi extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Registra no banco de dados os dados recebidos por post.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -59,7 +93,7 @@ class Controlador_api_heroi extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Retorna os dados de um herói especifico.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -86,7 +120,7 @@ class Controlador_api_heroi extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza o registro pelo id com os dados recebidos por PUT 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -130,7 +164,7 @@ class Controlador_api_heroi extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Apaga o registro e retorna os dados que foram apagados.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
