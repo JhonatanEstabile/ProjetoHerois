@@ -30,6 +30,10 @@
           @endif
         </div>
       </section>
+
     <script src="{{ asset('js/app.js')}}" type="text/javascript"></script>
+    @hasSection('javascript')
+      @yield('javascript')
+    @endif
   </body>
 </html>

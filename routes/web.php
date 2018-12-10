@@ -17,3 +17,10 @@ Route::get('/manual', function(){
 Route::resource('/classes', 'ClasseControlador');
 Route::resource('/especialidades', 'EspecialidadeControlador');
 Route::resource('/herois', 'HeroiControlador');
+
+Route::get('/herois/filtro_classe/{id}', function($id){
+
+});
+
+Route::get('/herois/filtro_classe/{id}', "HeroiControlador@heroi_filtro_classe");
+Route::get('/herois/filtro_especialidade/{id}', "HeroiControlador@heroi_filtro_especialidade");

@@ -19,8 +19,37 @@ class HeroiControlador extends Controller
     public function index()
     {
         $cats = Heroi::with(['classe', 'especialidade'])->get();
+        $cats_classe = Classe::all();
+        $cats_espec = Especialidade::all();
+
         //retorna a view_herois com todos os dados de todos os herois registrados
-        return view('view_herois', compact('cats'));
+        return view('view_herois', compact('cats', 'cats_classe', 'cats_espec'));
+    }
+
+    public function heroi_filtro_classe($id){
+        if( $id == -1 ){
+            return redirect("/herois");
+        }else{
+            $cats = Heroi::with(['classe', 'especialidade'])->where('classe_id', $id)->get();
+            $cats_classe = Classe::all();
+            $cats_espec = Especialidade::all();
+
+            //retorna a view_herois com todos os dados de todos os herois registrados com a classe escolhida
+            return view('view_herois', compact('cats', 'cats_classe', 'cats_espec', 'id'));
+        }
+    }
+
+    public function heroi_filtro_especialidade ($id){
+        if( $id == -1 ){
+            return redirect("/herois");
+        }else{
+            $cats = Especialidade::with(['heroi'])->find($id);
+            $cats_classe = Classe::all();
+            $cats_espec = Especialidade::all();
+
+            //retorna a view_herois com todos os dados de todos os herois registrados com a classe escolhida
+            return view('view_herois_especialidade', compact('cats', 'cats_classe', 'cats_espec', 'id'));
+        }
     }
 
     /**
