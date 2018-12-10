@@ -18,7 +18,7 @@ para pegar todos os dados das tabelas pela api basta usar o metodo get nas rotas
 
 para pegar os dados de um registro especifico das tabelas usando a api 
 basta usar o método get nas rotas "/" o número do id do registro que quer pegar :  
-- /api/classes/{{id}}" 
+- /api/classes/{{id}} 
 - /api/especialidades/{{id}}  
 - /api/herois/{{id}}
 
@@ -29,13 +29,13 @@ campo: **nome** (tipo string)
 Exemplo:  
 post para localhost:8000/api/classes campos do formulario Name="nome" value="Mago"
 
-- Rota: 'api/especialidades' 
+- Rota: api/especialidades 
 campo: **nome** (tipo string)
 
 exemplo:  
 post para localhost:8000/api/especialidades campos do formulario Name="nome" value="Ataque a distância"
 
-- Rota: '/api/herois'  
+- Rota: /api/herois  
 campos:  
 **nome** (tipo string);  
 **vida** (tipo integer);  
