@@ -71,7 +71,7 @@
             <!-- passa o tipo de envio put através do post para direcionar a rota certa -->
             <input type="hidden" name="_method" value="put">
             <button type="submit" class="btn btn-primary">Atualizar cadastro do herói</button>
-            <a class="btn btn-danger btn-sm" href="/herois">Cancelar<a>
+            <a class="btn btn-danger" href="/herois">Cancelar<a>
         </form>
     </div>
 </div>
