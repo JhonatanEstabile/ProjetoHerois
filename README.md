@@ -37,42 +37,42 @@ post para localhost:8000/api/especialidades campos do formulario Name="nome" val
 
 - Rota: '/api/herois'  
 campos:  
-- **nome** (tipo string);  
-- **vida** (tipo integer);  
-- **dano** (tipo integer);  
-- **defesa** (tipo integer);  
-- **vel_atq** (tipo double);  
-- **vel_mov** (tipo integer);  
-- **classe** (tipo integer);  
-- **especialidade[]** (tipo integer) pode colocar quantos campos desse quiser  
-- **foto_heroi[]** (tipo file)
+**nome** (tipo string);  
+**vida** (tipo integer);  
+**dano** (tipo integer);  
+**defesa** (tipo integer);  
+**vel_atq** (tipo double);  
+**vel_mov** (tipo integer);  
+**classe** (tipo integer);  
+**especialidade[]** (tipo integer) pode colocar quantos campos desse quiser  
+**foto_heroi[]** (tipo file)
 
 para atualizar os dados de um registro específico das tabelas pela api 
 basta usar o método put para enviar os dados nas seguintes rotas passando "/" o numero do id do registro que quer atualizar :  
-- "/api/classes/{{id}}"  
+- /api/classes/{{id}}  
 campo: **nome** (tipo string)
 
-- "/api/especialidades/{{id}}"  
+- /api/especialidades/{{id}}  
 campo: **nome** (tipo string)  
 
-- "/api/herois/{{id}}"  
+- /api/herois/{{id}}  
 campos:  
-- **nome** (tipo string);  
-- **vida** (tipo integer);  
-- **dano** (tipo integer);  
-- **defesa** (tipo integer);  
-- **vel_atq** (tipo double);  
-- **vel_mov** (tipo integer);  
-- **classe** (tipo integer);  
-- **especialidade[]** (tipo integer) pode colocar quantos campos desse quiser;  
-- **foto_heroi** (tipo file) este campo **não é obrigatório**;
+**nome** (tipo string);  
+**vida** (tipo integer);  
+**dano** (tipo integer);  
+**defesa** (tipo integer);  
+**vel_atq** (tipo double);  
+**vel_mov** (tipo integer);  
+**classe** (tipo integer);  
+**especialidade[]** (tipo integer) pode colocar quantos campos desse quiser;  
+**foto_heroi** (tipo file) este campo **não é obrigatório**;
 
 A exclusão é feita por meio do metodo http delete passando pela url o id do registro que quer apagar:
 
-- "/api/classes/{{id}}"  
-- "/api/especialidades/{{id}}"  
-- "/api/herois/{{id}}"  
+- /api/classes/{{id}}  
+- /api/especialidades/{{id}}  
+- /api/herois/{{id}}  
 
 Para pegar os heróis por uma certa classe ou especialidade envie um GET com o id do atributo selecionado para as seguintes rotas  
-- "/api/herois/classe/{{id}}"  
-- "/api/herois/especialidade/{{id}}"
+- /api/herois/classe/{{id}}  
+- /api/herois/especialidade/{{id}}
