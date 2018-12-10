@@ -31,6 +31,7 @@
                             <a href="/herois/{{$cat->id}}/edit" class="btn btn-sm btn-outline-primary">Editar</a>
                             <form method="post" action="/herois/{{$cat->id}}">
                                 @csrf
+                                <!--Mini formulario apenas para passar o metodo delete pelo post junto com o id do registro-->
                                 <input type="hidden" name="_method" value="delete">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Apagar</button>
                             </form>

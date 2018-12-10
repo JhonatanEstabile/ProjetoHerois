@@ -11,7 +11,7 @@
             </div>
         @endif
 
-@if(count($cats) > 0)
+@if(count($classes) > 0)
         <table class="table table-ordered table-hover">
             <thead>
                 <tr>
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-    @foreach($cats as $cat)
+    @foreach($classes as $cat)
                 <tr>
                     <td>{{$cat->id}}</td>
                     <td>{{$cat->nome}}</td>
@@ -30,6 +30,7 @@
                             <a href="/classes/{{$cat->id}}/edit" class="btn btn-sm btn-outline-primary">Editar</a>
                             <form method="post" action="/classes/{{$cat->id}}">
                                 @csrf
+                                <!--Mini formulario apenas para passar o metodo delete pelo post junto com o id do registro-->
                                 <input type="hidden" name="_method" value="delete">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Apagar</button>
                             </form>

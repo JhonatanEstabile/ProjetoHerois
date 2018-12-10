@@ -19,9 +19,9 @@
                  que são acessiveis através da barra de navegação em seus respectivos itens.</p>
 
                  <p>Ao chegar na interface de listagem, caso não tenha nenhum registro você verá apenas os botões de cadastro, clicando 
-                 o navegador será redirecionado diretamente para os formulários de cadastro, 
-                 os formulários de classes e especialidades contam apenas com um campo, este sever para registrar seus nomes,
-                 depois de digitar basta clicar em salvar e você será redirecionado para a tela de listagem, agora esta estará com o registro que 
+                 o navegador será redirecionado diretamente para os formulários de cadastros, 
+                 os formulários de classes e especialidades contam apenas com um campo, este serve para registrar seus nomes,
+                 depois de digitar basta clicar em salvar e você será redirecionado para a tela de listagem, agora esta contará com o registro que 
                  acabou de criar.</p>
             </div>
         </div>

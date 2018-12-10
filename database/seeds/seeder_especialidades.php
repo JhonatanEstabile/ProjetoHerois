@@ -11,10 +11,13 @@ class seeder_especialidades extends Seeder
      */
     public function run()
     {
-        DB::table('especialidades')->insert([ 'nome' => 'Cura em area']);
-        DB::table('especialidades')->insert([ 'nome' => 'Magia de Gelo']);
-        DB::table('especialidades')->insert([ 'nome' => 'Dano Critico']);
-        DB::table('especialidades')->insert([ 'nome' => 'Dupla empunhadura']);
-        DB::table('especialidades')->insert([ 'nome' => 'Defesa Impenetravel']);
+        DB::table('especialidades')->insert([ 'nome' => 'Antitanque']);
+        DB::table('especialidades')->insert([ 'nome' => 'Ataque em área']);
+        DB::table('especialidades')->insert([ 'nome' => 'Ataque a distância']);
+        DB::table('especialidades')->insert([ 'nome' => 'Cura']);
+        DB::table('especialidades')->insert([ 'nome' => 'Invocação']);
+        DB::table('especialidades')->insert([ 'nome' => 'Magia Branca']);
+        DB::table('especialidades')->insert([ 'nome' => 'Matador de chefes']);
+        DB::table('especialidades')->insert([ 'nome' => 'Tanker']);
     }
 }

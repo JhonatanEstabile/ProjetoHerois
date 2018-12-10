@@ -1,3 +1,4 @@
+<!--Chama o layout- principal e passa por paramentro a pagina atual-->
 @extends('layout.app', ["current" => "especialidades"])
 
 @section('body')

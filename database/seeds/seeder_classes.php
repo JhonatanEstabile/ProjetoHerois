@@ -13,8 +13,8 @@ class seeder_classes extends Seeder
     {
         DB::table('classes')->insert([ 'nome' => 'Arqueiro']);
         DB::table('classes')->insert([ 'nome' => 'Cavaleiro']);
-        DB::table('classes')->insert([ 'nome' => 'Curandeiro']);
-        DB::table('classes')->insert([ 'nome' => 'Ladrão']);
         DB::table('classes')->insert([ 'nome' => 'Mago']);
+        DB::table('classes')->insert([ 'nome' => 'Sacerdote']);
+        DB::table('classes')->insert([ 'nome' => 'Lutador']);
     }
 }

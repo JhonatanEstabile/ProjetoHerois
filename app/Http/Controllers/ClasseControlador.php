@@ -8,20 +8,20 @@ use App\Classe;
 class ClasseControlador extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *Retorna a view com todas as classes regitradas
      *
-     * @return \Illuminate\Http\Response
+     * @return view com objeto classes
      */
     public function index()
     {
-        $cats = Classe::all();
-        return view('view_classes', compact('cats'));
+        $classes = Classe::all();
+        return view('view_classes', compact('classes'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Retorna o formulário para cadastrar uma nova classe.
      *
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function create()
     {
@@ -29,16 +29,16 @@ class ClasseControlador extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Metodo para salvar os dados do formulário de criação de classe
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $cat = new Classe();
-        $cat->nome = $request->input('nome_classe');
-        $cat->save();
+        $classe = new Classe();
+        $classe->nome = $request->input('nome_classe');
+        $classe->save();
         return redirect('/classes');
     }
 
@@ -54,16 +54,16 @@ class ClasseControlador extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Retorna o formulário de edição com os dados do registro que quer editar.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $cat = Classe::find($id);
-        if(isset($cat)) {
-            return view('editar_classe', compact('cat'));
+        $classe = Classe::find($id);
+        if(isset($classe)) {
+            return view('editar_classe', compact('classe'));
         }
         return redirect('/classes');
     }
@@ -77,16 +77,16 @@ class ClasseControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cat = Classe::find($id);
-        if(isset($cat)) {
-            $cat->nome = $request->input('nome_classe');
-            $cat->save();
+        $classe = Classe::find($id);
+        if(isset($classe)) {
+            $classe->nome = $request->input('nome_classe');
+            $classe->save();
         }
         return redirect('/classes');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Exclui uma classe especifica selecionada pelo id.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

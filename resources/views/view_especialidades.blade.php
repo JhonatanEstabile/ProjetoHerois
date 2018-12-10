@@ -4,6 +4,8 @@
 <div class="card border">
     <div class="card-body">
         <h5 class="card-title">Cadastro de Especialidades</h5>
+        
+        <!-- Verifica se foi retornado algum erro, caso tenha mostra para o usuário -->
         @if(session()->get('error') != null)
             <div class="alert alert-danger">
                 {!! session()->get('error') !!}
@@ -28,6 +30,7 @@
                             <a href="/especialidades/{{$cat->id}}/edit" class="btn btn-sm btn-outline-primary">Editar</a>
                             <form method="post" action="/especialidades/{{$cat->id}}">
                                 @csrf
+                                <!--Mini formulario apenas para passar o metodo delete pelo post junto com o id do registro-->
                                 <input type="hidden" name="_method" value="delete">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Apagar</button>
                             </form>

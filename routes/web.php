@@ -6,7 +6,7 @@ use App\Especialidade;
 Route::get('/', function () {
     $heroi = Heroi::all();
     $classe = count(Classe::all());
-    $especialidade = count(Heroi::all());
+    $especialidade = count(Especialidade::all());
     return view('home', compact('heroi', 'classe', 'especialidade'));
 });
 

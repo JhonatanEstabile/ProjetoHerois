@@ -2,7 +2,9 @@
 
 @section('body')
 		<div class="row">
-
+			
+			<!--Cria os cards com as informações de quantidade de registros de 
+			cada tabela que o usuário tem controle-->
 			<div class="col-md-4">
 				@component('component.card_inicio', ['tipo' => 'Classes', 'quantidade' => $classe, 'rota'=>'/classes/create'])
 				@endcomponent
@@ -21,6 +23,7 @@
 		</div>
 @endsection
 
+<!-- Cria os cards com as informações dos heróis -->
 @section('cards_herois')
 <div class="row" style="margin-top:25px;">
 	@foreach($heroi as $cat)

@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" name="nome" value="{{$cat->nome}}">
                 </div>
             </div>
-
+            <!--Cria um select com todas as classes e a classe atual do heroi selecionada-->
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="input_classe">Classe</label>
@@ -22,6 +22,7 @@
                         @endforeach
                     </select>
                 </div>
+                <!--Cria um select multiplo com todas as especialidades contendo as do registro já selecionadas-->
                 <div class="form-group col-md-6">
                     <label for="input_classe">Especialidades</label>
                     <select id="input_classe" class="form-control" multiple size="3" name="especialidades[]">
@@ -67,7 +68,7 @@
                 </div>
             </div>
             <br>
-
+            <!-- passa o tipo de envio put através do post para direcionar a rota certa -->
             <input type="hidden" name="_method" value="put">
             <button type="submit" class="btn btn-primary">Atualizar cadastro do herói</button>
         </form>
