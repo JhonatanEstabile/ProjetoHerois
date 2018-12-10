@@ -15,7 +15,7 @@ class EspecialidadeControlador extends Controller
     public function index()
     {
         $cats = Especialidade::all();
-        return view('view_especialidades', compact('cats'));
+        return view('view_especialidades', compact('cats'));//retorna a view com os dados dos refistros dos herois
     }
 
     /**
@@ -25,7 +25,7 @@ class EspecialidadeControlador extends Controller
      */
     public function create()
     {
-        return view('nova_especialidade');
+        return view('nova_especialidade');//retorna a view do formulario de cadastro
     }
 
     /**
@@ -39,7 +39,7 @@ class EspecialidadeControlador extends Controller
         $cat = new Especialidade();
         $cat->nome = $request->input('nome_espec');
         $cat->save();
-        return redirect('/especialidades');
+        return redirect('/especialidades');//salva e redireciona para a tela de listagem de especialidades
     }
 
     /**
@@ -62,10 +62,10 @@ class EspecialidadeControlador extends Controller
     public function edit($id)
     {
         $cat = Especialidade::find($id);
-        if(isset($cat)){
-            return view('editar_especialidade', compact('cat'));
+        if(isset($cat)){//verifica se o registro existe
+            return view('editar_especialidade', compact('cat'));//retorna o formulário para edição com os dados do registro
         }
-        return redirect('/classes');
+        return redirect('/especialidades');//caso o registro não exita retorn a pagina especialidades 
     }
 
     /**
@@ -80,9 +80,9 @@ class EspecialidadeControlador extends Controller
         $cat = Especialidade::find($id);
         if(isset($cat)) {
             $cat->nome = $request->input('nome_espec');
-            $cat->save();
+            $cat->save();//atualiza os dados
         }
-        return redirect('/especialidades');
+        return redirect('/especialidades');//redireciona para a view especialidades
     }
 
     /**
@@ -98,9 +98,10 @@ class EspecialidadeControlador extends Controller
             try{
                 $cat->delete();
             } catch (\PDOException $e) {
+                //caso de erro ao excluir retorna uma mensagem de erro
                 return back()->with('error', 'A especialidade não pode ser excluida pois esta atrelada a um herói');
             }
         }
-        return redirect('/especialidades');
+        return redirect('/especialidades');//redireciona para a view expecialidades
     }
 }

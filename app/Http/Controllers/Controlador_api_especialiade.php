@@ -39,7 +39,7 @@ class Controlador_api_especialiade extends Controller
         $espec = new Especialidade();
         $espec->nome = $request->input('nome');
         $espec->save();
-        return json_encode($espec);
+        return json_encode($espec);//retorna o json com os dados salvos
     }
 
     /**
@@ -95,13 +95,13 @@ class Controlador_api_especialiade extends Controller
     public function destroy($id)
     {
         $espec = Especialidade::find($id);
-        if(isset($espec)){
+        if(isset($espec)){//verifica se a especialidade existe
             try{
-                $espec->delete();
+                $espec->delete();//apaga o registro
             } catch (\PDOException $e) {
                 return response('A especialidade não pode ser excluída pois está atrelada a um herói', 403);
             }
         }
-        return json_encode($espec);
+        return json_encode($espec);//retorna os dados apagados
     }
 }

@@ -15,7 +15,7 @@
             </div>
             <input type="hidden" name="_method" value="put">
             <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-            <button type="cancel" class="btn btn-danger btn-sm">Cancel</button>
+            <a class="btn btn-danger btn-sm" href="/classes">Cancelar<a>
         </form>
     </div>
 </div>

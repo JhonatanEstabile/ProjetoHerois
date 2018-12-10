@@ -64,6 +64,7 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Cadastrar herói</button>
+            <a class="btn btn-danger btn-sm" href="/herois">Cancelar<a>
         </form>
     </div>
 </div>

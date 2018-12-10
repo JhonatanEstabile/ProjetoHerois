@@ -39,7 +39,7 @@ class Controlador_api_classe extends Controller
         $classe = new Classe();
         $classe->nome = $request->input('nome');//pega o dado do campo nome
         $classe->save();
-        return json_encode($classe);
+        return json_encode($classe);//retorna os dados salvos
     }
 
     /**
@@ -95,13 +95,13 @@ class Controlador_api_classe extends Controller
     public function destroy($id)
     {
         $classe = Classe::find($id);
-        if(isset($classe)){
+        if(isset($classe)){//verifica se a classe existe
             try{
-                $classe->delete();
+                $classe->delete();//apaga o registro
             } catch (\PDOException $e) {
                 return response('A classe não pode ser excluída pois está atrelada a um herói', 403);
             }
         }
-        return json_encode($classe);
+        return json_encode($classe);//retorna a classe
     }
 }

@@ -7,7 +7,8 @@ Baixe os arquivos desse projeto e instale em seu servidor apache, crie e configu
 - **php artisan storage:link**  
 - **npm rum**  
 - **npm run dev**  
-Para o pleno funcionamento do projeto crie um banco de dados de preferencia no mySQL ou mariaDB, todas as informações da conexão com o banco de dados, url do projeto, entre outras configurações básicas já deverão ter sidos configuradas no arquivo .env que você criou e que deverá estar localizado na raiz do projeto.
+Para o pleno funcionamento do projeto crie um banco de dados de preferencia no mySQL ou mariaDB, todas as informações da conexão com o banco de dados, url do projeto, entre outras configurações básicas já deverão ter sidos configuradas no arquivo .env que você criou e que deverá estar localizado na raiz do projeto. Caso queira usar o seeder que tem no projeto para colocar alguns registros na tabela classes e especialidades execute o comando **php artisan db:seed** .  
+Dentro do Sistema na barra de navegação está o item manual do sistema, lá tem o funcionamento do sistema para o usuário tirar possíeis dúvidas. 
 
 ## Rotas para acesso da API
 

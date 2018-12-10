@@ -11,7 +11,7 @@ use App\Especialidade;
 class Controlador_api_heroi extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * retorna todos os registros da tabela herois
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,11 +28,11 @@ class Controlador_api_heroi extends Controller
      */
     public function heroi_filtro_classe($id){
 
-        $cats = Heroi::with(['classe', 'especialidade'])->where('classe_id', $id)->get();
-        if(isset($cats)){
-            return json_encode($cats);
+        $herois = Heroi::with(['classe', 'especialidade'])->where('classe_id', $id)->get();
+        if(isset($herois)){//verifica se os registro existem
+            return json_encode($herois);
         }else{
-            return response('Classe não encontrada', 404);
+            return response('Classe não encontrada', 404);//retorna o erro caso não encontre registros
         }
 
     }
@@ -45,10 +45,10 @@ class Controlador_api_heroi extends Controller
     public function heroi_filtro_especialidade ($id){
 
         $cats = Especialidade::with(['heroi'])->find($id);
-        if(isset($cats)){
+        if(isset($cats)){//verifica se os registro existem
             return json_encode($cats);
         }else{
-            return response('Especialidade não encontrada', 404);
+            return response('Especialidade não encontrada', 404);//retorna o erro caso não encontre registros
         }
 
     }
@@ -72,7 +72,7 @@ class Controlador_api_heroi extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('arquivo')->store('imagens', 'public');//pega o caminho da imagem enviada
+        $path = $request->file('foto_heroi')->store('imagens', 'public');//pega o caminho da imagem enviada
 
         $heroi = new Heroi();
         $heroi->nome = $request->input('nome');
@@ -85,11 +85,11 @@ class Controlador_api_heroi extends Controller
         $heroi->classe_id = $request->input('classe');
         $heroi->save();
         $heroi_espec = $request->input('especialidade');
-        foreach ($heroi_espec as $he) {
+        foreach ($heroi_espec as $he) {//cria os relacionamentos entre o heroi e as especialidades
             $heroi->especialidade()->attach($he);
         }
 
-        return json_encode($heroi);
+        return json_encode($heroi);//retorna os dados que foram salvos
     }
 
     /**
@@ -104,7 +104,7 @@ class Controlador_api_heroi extends Controller
         if(isset($heroi)){    
             return $heroi->toJson(); //retorna um json com os dados requisitados
         }else{
-            return response("Registro não encontrado", 404);
+            return response("Registro não encontrado", 404);//caso não tenha registro retorna o erro
         }
     }
 
@@ -140,8 +140,8 @@ class Controlador_api_heroi extends Controller
             $heroi->vel_mov = $request->input('vel_mov');
 
             //pega o caminho da imagem enviada
-            if($request->file('arquivo') != null){//verifica se uma imagem foi mandada
-                $path = $request->file('arquivo')->store('imagens', 'public');
+            if($request->file('foto_heroi') != null){//verifica se uma imagem foi mandada
+                $path = $request->file('foto_heroi')->store('imagens', 'public');
                 $arquivo = $heroi->foto_heroi;
                 Storage::disk('public')->delete($arquivo);//exclui a foto atual do heroi
                 $heroi->foto_heroi = $path;//atribui a foto nova
@@ -182,9 +182,9 @@ class Controlador_api_heroi extends Controller
                 $heroi->delete();//apaga o registro do heroi
             } catch (\PDOException $e) {
                 //retorna o erro
-                return response('O pedido não pôde ser entregue devido à sintaxe incorreta.', 400);
+                return response('O pedido não pôde ser entregue devido à sintaxe incorreta.', 400);//retorna um erro em caso de problema na operação.
             }
         }
-        return json_encode($heroi);
+        return json_encode($heroi);//retorna os dados excluidos
     }
 }

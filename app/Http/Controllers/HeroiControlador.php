@@ -18,7 +18,7 @@ class HeroiControlador extends Controller
      */
     public function index()
     {
-        $cats = Heroi::with(['classe', 'especialidade'])->get();
+        $cats = Heroi::with(['classe', 'especialidade'])->get();//pega os dados dos herois e de seus relacionamentos
         $cats_classe = Classe::all();
         $cats_espec = Especialidade::all();
 
@@ -27,7 +27,7 @@ class HeroiControlador extends Controller
     }
 
     public function heroi_filtro_classe($id){
-        if( $id == -1 ){
+        if( $id == -1 ){//verifica se todas as classes foi selecionado
             return redirect("/herois");
         }else{
             $cats = Heroi::with(['classe', 'especialidade'])->where('classe_id', $id)->get();
@@ -43,11 +43,11 @@ class HeroiControlador extends Controller
         if( $id == -1 ){
             return redirect("/herois");
         }else{
-            $cats = Especialidade::with(['heroi'])->find($id);
+            $cats = Especialidade::with(['heroi'])->find($id);//pega a especialidade com os herois relacionados a ela
             $cats_classe = Classe::all();
             $cats_espec = Especialidade::all();
 
-            //retorna a view_herois com todos os dados de todos os herois registrados com a classe escolhida
+            //retorna a view_herois_especialidade com todos os dados de todos os herois registrados com a classe escolhida
             return view('view_herois_especialidade', compact('cats', 'cats_classe', 'cats_espec', 'id'));
         }
     }
@@ -116,7 +116,7 @@ class HeroiControlador extends Controller
     {
         $cat = Heroi::with(['classe', 'especialidade'])->find($id);
         $especialidades_array = array();
-        foreach ($cat->especialidade as $a) {//cria um array com as especialidades do heroi escolhidas
+        foreach ($cat->especialidade as $a) {//cria um array com as especialidades do heroi escolhidas para comparar na view
             $especialidades_array[] = $a->id;
         }
         $cats_classe = Classe::all();//pega todas as classes
