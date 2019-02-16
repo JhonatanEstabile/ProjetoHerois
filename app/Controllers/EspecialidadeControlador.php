@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
 use Illuminate\Http\Request;
-use App\Especialidade;
+use App\Models\Especialidade;
 
 class EspecialidadeControlador extends Controller
 {

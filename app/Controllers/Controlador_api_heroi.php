@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Heroi;
-use App\HeroiEspecialidade;
-use App\Especialidade;
+use App\Models\Heroi;
+use App\Models\HeroiEspecialidade;
+use App\Models\Especialidade;
 
 class Controlador_api_heroi extends Controller
 {

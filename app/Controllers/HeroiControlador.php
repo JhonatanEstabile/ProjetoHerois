@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Classe;
-use App\Heroi;
-use App\Especialidade;
-use App\HeroiEspecialidade;
+use App\Models\Classe;
+use App\Models\Heroi;
+use App\Models\Especialidade;
+use App\Models\HeroiEspecialidade;
 
 class HeroiControlador extends Controller
 {

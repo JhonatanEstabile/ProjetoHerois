@@ -1,7 +1,7 @@
 <?php
-use App\Heroi;
-use App\Classe;
-use App\Especialidade;
+use App\Models\Heroi;
+use App\Models\Classe;
+use App\Models\Especialidade;
 
 Route::get('/', function () {
     $heroi = Heroi::all();
